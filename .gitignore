@@ -107,4 +107,5 @@ venv.bak/
 logs-*/
 training_data/
 tacotron_output/
+.idea/
 

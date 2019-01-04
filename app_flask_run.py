@@ -12,6 +12,7 @@ from flask import request
 
 import app_config
 from app_synthesize import synthesizeBytex
+from infolog import log
 
 user_data = [
     {
@@ -41,6 +42,7 @@ def tacotron():
             'tex': tex,
             'wavPath':wavPath
         }
+        log('logId={} , tacotron return data = {}'.format(logId,data))
 
     return json.dumps(data, ensure_ascii=False, indent=1)
 
@@ -53,7 +55,7 @@ def main():
     app.permanent_session_lifetime = 60 * 60 * 2
     app.config.from_object(app_config)
     app.register_blueprint(api, url_prefix='/tts')
-    app.run(host='0.0.0.0', port=5031, )
+    app.run(host='0.0.0.0', port=8120, )
     print("flask 启动成功")
 
 
